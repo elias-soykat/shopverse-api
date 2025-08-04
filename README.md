@@ -367,28 +367,3 @@ npm run test:coverage
 3. Set up PostgreSQL database
 4. Run migrations
 5. Start the server
-
-```bash
-# Production deployment
-NODE_ENV=production npm start
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the ISC License.
-
-## 🆘 Support
-
-For support and questions, please open an issue in the repository.
-
----
-
-**ShopVerse API** - Built with ❤️ for modern e-commerce applications
