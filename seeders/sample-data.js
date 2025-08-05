@@ -6,12 +6,11 @@ const seedData = async () => {
     console.log("🌱 Starting database seeding...");
 
     // Create admin user
-    const adminPassword = await bcrypt.hash("admin123", 12);
     const adminUser = await User.create({
       firstName: "Admin",
       lastName: "User",
       email: "admin@shopverse.com",
-      password: adminPassword,
+      password: "admin123",
       role: "admin",
       phone: "+1234567890",
       address: "123 Admin Street, Admin City, AC 12345",
@@ -21,12 +20,11 @@ const seedData = async () => {
     console.log("✅ Admin user created:", adminUser.email);
 
     // Create sample customer
-    const customerPassword = await bcrypt.hash("customer123", 12);
     const customerUser = await User.create({
       firstName: "John",
       lastName: "Doe",
       email: "customer@shopverse.com",
-      password: customerPassword,
+      password: "customer123",
       role: "customer",
       phone: "+1987654321",
       address: "456 Customer Ave, Customer City, CC 54321",
