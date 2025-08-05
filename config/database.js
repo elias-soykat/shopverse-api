@@ -1,14 +1,25 @@
 require("dotenv").config();
 
+// Helper function to determine logging level
+const getLoggingConfig = () => {
+  if (process.env.DB_LOGGING === "true") {
+    return console.log;
+  } else if (process.env.DB_LOGGING === "sql") {
+    return (sql) => console.log(sql);
+  } else {
+    return false;
+  }
+};
+
 module.exports = {
   development: {
-    username: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASSWORD || "your_password",
+    username: process.env.DB_USER || "my_user",
+    password: process.env.DB_PASSWORD || "my_password",
     database: process.env.DB_NAME || "shopverse_db",
     host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT || 5432,
     dialect: "postgres",
-    logging: console.log,
+    logging: getLoggingConfig(), // Controlled by DB_LOGGING env var
     pool: {
       max: 5,
       min: 0,
@@ -17,8 +28,8 @@ module.exports = {
     },
   },
   test: {
-    username: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASSWORD || "your_password",
+    username: process.env.DB_USER || "my_user",
+    password: process.env.DB_PASSWORD || "my_password",
     database: process.env.DB_NAME_TEST || "shopverse_test_db",
     host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT || 5432,
@@ -32,8 +43,8 @@ module.exports = {
     },
   },
   production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
+    username: process.env.DB_USER || "my_user",
+    password: process.env.DB_PASSWORD || "my_password",
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,

@@ -12,6 +12,7 @@ async function startServer() {
 
     // Sync database (in development)
     if (process.env.NODE_ENV === "development") {
+      console.log("🔄 Syncing database...");
       await sequelize.sync({ alter: true });
       console.log("✅ Database synchronized.");
     }
